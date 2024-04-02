@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name  Player
 
 @export var bullet_scene : PackedScene
+@export var level : Level
 
 const SPEED : int = 50
 
@@ -32,7 +33,7 @@ func to_move() -> void:
 
 func to_shoot() -> void:
 	if Input.is_action_just_pressed("to_shoot"):
-		add_child(bullet_scene.instantiate())
+		level.add_bullet(bullet_scene.instantiate())
 
 func is_dead() -> bool:
 	return hp <= 0

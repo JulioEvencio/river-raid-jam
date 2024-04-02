@@ -1,4 +1,5 @@
 extends Node
+class_name Level
 
 @export var player : Player
 @export var spawn_point : Marker2D
@@ -14,3 +15,7 @@ func _process(_delta : float) -> void:
 
 func can_update(y : int) -> bool:
 	return y >= player.position.y + destroy_point.position.y
+
+func add_bullet(bullet : Bullet) -> void:
+	bullet.position = player.position
+	add_child(bullet)
