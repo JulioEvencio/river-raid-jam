@@ -3,9 +3,6 @@ class_name Enemy
 
 var damage : int = 1
 
-func _physics_process(_delta : float) -> void:
-	pass
-
 func to_kill():
 	queue_free()
 

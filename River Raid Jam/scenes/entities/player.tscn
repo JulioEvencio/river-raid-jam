@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://daac3s75r1ehw"]
+[gd_scene load_steps=8 format=3 uid="uid://daac3s75r1ehw"]
 
 [ext_resource type="Texture2D" uid="uid://bx62exogr5pa1" path="res://assets/images/entities/player.png" id="1_bueuj"]
 [ext_resource type="Script" path="res://scripts/entities/player.gd" id="1_h7tpe"]
+[ext_resource type="PackedScene" uid="uid://dp68jomgmed4x" path="res://scenes/objects/bullet.tscn" id="2_0cyts"]
 
 [sub_resource type="Animation" id="Animation_hfhf3"]
 length = 0.001
@@ -47,6 +48,11 @@ size = Vector2(4, 10)
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 4
 script = ExtResource("1_h7tpe")
+bullet_scene = ExtResource("2_0cyts")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(0, -50)
+zoom = Vector2(2, 2)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_bueuj")
@@ -60,7 +66,3 @@ autoplay = "flying"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_susr1")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2(0, -50)
-zoom = Vector2(2, 2)

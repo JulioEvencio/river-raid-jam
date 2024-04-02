@@ -1,14 +1,17 @@
 extends CharacterBody2D
 class_name  Player
 
+@export var bullet_scene : PackedScene
+
 const SPEED : int = 50
 
 var hp : int = 1
 
 func _physics_process(_delta : float) -> void:
-	move()
+	to_move()
+	to_shoot()
 
-func move() -> void:
+func to_move() -> void:
 	var speed_y : int = -20
 	
 	if Input.is_action_pressed("move_down"):
@@ -26,6 +29,10 @@ func move() -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
 	move_and_slide()
+
+func to_shoot() -> void:
+	if Input.is_action_just_pressed("to_shoot"):
+		add_child(bullet_scene.instantiate())
 
 func is_dead() -> bool:
 	return hp <= 0
