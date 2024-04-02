@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bmo2v8t85lnxp"]
+[gd_scene load_steps=7 format=3 uid="uid://bmo2v8t85lnxp"]
 
-[ext_resource type="Script" path="res://scripts/level.gd" id="1_dyu4s"]
+[ext_resource type="Script" path="res://scripts/levels/level.gd" id="1_dyu4s"]
 [ext_resource type="PackedScene" uid="uid://03o5k371brl4" path="res://scenes/backgrounds/parallax_background.tscn" id="2_o8cy8"]
 [ext_resource type="PackedScene" uid="uid://cd01g5kgjrsdm" path="res://scenes/objects/terrain.tscn" id="3_8opf0"]
 [ext_resource type="PackedScene" uid="uid://daac3s75r1ehw" path="res://scenes/entities/player.tscn" id="4_rb8e3"]
+[ext_resource type="PackedScene" uid="uid://swx7n22q173g" path="res://scenes/entities/helicopter.tscn" id="5_k63sy"]
+[ext_resource type="PackedScene" uid="uid://dp68jomgmed4x" path="res://scenes/objects/bullet.tscn" id="6_84p33"]
 
 [node name="Level" type="Node" node_paths=PackedStringArray("player", "spawn_point", "destroy_point")]
 script = ExtResource("1_dyu4s")
@@ -24,6 +26,9 @@ position = Vector2(176, 0)
 [node name="TerrainRight2" parent="." instance=ExtResource("3_8opf0")]
 position = Vector2(176, -192)
 
+[node name="Helicopter" parent="." instance=ExtResource("5_k63sy")]
+position = Vector2(126, -71)
+
 [node name="Player" parent="." instance=ExtResource("4_rb8e3")]
 position = Vector2(125, 146)
 
@@ -32,3 +37,6 @@ position = Vector2(-125, -338)
 
 [node name="DestroyPoint" type="Marker2D" parent="Player"]
 position = Vector2(-125, 46)
+
+[node name="Bullet" parent="." instance=ExtResource("6_84p33")]
+position = Vector2(125, 158)

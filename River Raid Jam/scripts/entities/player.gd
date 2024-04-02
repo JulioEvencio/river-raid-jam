@@ -1,6 +1,9 @@
 extends CharacterBody2D
+class_name  Player
 
 const SPEED : int = 50
+
+var hp : int = 1
 
 func _physics_process(_delta : float) -> void:
 	move()
@@ -23,3 +26,9 @@ func move() -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
 	move_and_slide()
+
+func is_dead() -> bool:
+	return hp <= 0
+
+func take_damage(damage : int) -> void:
+	hp -= damage
