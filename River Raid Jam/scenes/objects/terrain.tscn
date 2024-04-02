@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cd01g5kgjrsdm"]
+[gd_scene load_steps=4 format=3 uid="uid://cd01g5kgjrsdm"]
 
 [ext_resource type="Texture2D" uid="uid://be371h5v7ic3g" path="res://assets/images/objects/grass.png" id="1_a16s5"]
+[ext_resource type="PackedScene" uid="uid://b702ct8qklhet" path="res://scenes/tiles/tile_map.tscn" id="2_ien6t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d6eyi"]
 size = Vector2(80, 192)
@@ -15,3 +16,6 @@ texture = ExtResource("1_a16s5")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(40, 96)
 shape = SubResource("RectangleShape2D_d6eyi")
+
+[node name="TileMap" parent="." instance=ExtResource("2_ien6t")]
+layer_0/tile_data = PackedInt32Array(65539, 0, 0, 262145, 0, 0, 589827, 0, 0, 458753, 1, 0, 327683, 1, 0, 131073, 1, 0, 1, 2, 0, 458755, 2, 0, 655361, 2, 0)

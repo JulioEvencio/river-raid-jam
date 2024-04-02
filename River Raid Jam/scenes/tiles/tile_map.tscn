@@ -1,0 +1,27 @@
+[gd_scene load_steps=8 format=3 uid="uid://b702ct8qklhet"]
+
+[ext_resource type="Texture2D" uid="uid://tu5mut4yw0ot" path="res://assets/images/tiles/house.png" id="1_bxy1h"]
+[ext_resource type="Texture2D" uid="uid://dqd1jq5puqi8d" path="res://assets/images/tiles/building.png" id="2_56sd1"]
+[ext_resource type="Texture2D" uid="uid://brhiwytsgui1m" path="res://assets/images/tiles/tree.png" id="3_yka4b"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ugakl"]
+texture = ExtResource("1_bxy1h")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_syfs3"]
+texture = ExtResource("2_56sd1")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bvvn7"]
+texture = ExtResource("3_yka4b")
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_4qtq5"]
+sources/0 = SubResource("TileSetAtlasSource_ugakl")
+sources/1 = SubResource("TileSetAtlasSource_syfs3")
+sources/2 = SubResource("TileSetAtlasSource_bvvn7")
+
+[node name="TileMap" type="TileMap"]
+tile_set = SubResource("TileSet_4qtq5")
+format = 2
+layer_0/name = "objects"
