@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://03o5k371brl4"]
+
+[ext_resource type="Texture2D" uid="uid://bfh0w2qj0dwg0" path="res://assets/backgrounds/water.png" id="1_wts4b"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(96, 192)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_wts4b")
