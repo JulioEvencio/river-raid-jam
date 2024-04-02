@@ -49,3 +49,6 @@ sources/4 = SubResource("TileSetAtlasSource_qwc5u")
 [node name="TileMap" type="TileMap"]
 tile_set = SubResource("TileSet_21ebk")
 format = 2
+layer_0/name = "terrain"
+layer_1/name = "objects"
+layer_1/tile_data = PackedInt32Array()
