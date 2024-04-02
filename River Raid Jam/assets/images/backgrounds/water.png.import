@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brhiwytsgui1m"
-path="res://.godot/imported/tree.png-5f1024908ff22f9daf00553b9b94b3e2.ctex"
+uid="uid://chobdntbfvqgb"
+path="res://.godot/imported/water.png-3c4f87b2857213c30342fc449d142fee.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tiles/tree.png"
-dest_files=["res://.godot/imported/tree.png-5f1024908ff22f9daf00553b9b94b3e2.ctex"]
+source_file="res://assets/images/backgrounds/water.png"
+dest_files=["res://.godot/imported/water.png-3c4f87b2857213c30342fc449d142fee.ctex"]
 
 [params]
 
