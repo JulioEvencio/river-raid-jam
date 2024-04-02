@@ -48,9 +48,6 @@ size = Vector2(4, 10)
 collision_layer = 4
 script = ExtResource("1_h7tpe")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2(0, -50)
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_bueuj")
 hframes = 2
@@ -63,3 +60,7 @@ autoplay = "flying"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_susr1")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(0, -50)
+zoom = Vector2(2, 2)
