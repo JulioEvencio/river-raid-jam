@@ -2,14 +2,19 @@ extends CharacterBody2D
 class_name  Player
 
 @export var level : Level
+@export var animation : AnimationPlayer
 
 const SPEED : int = 50
 
 var hp : int = 1
 
+func _ready() -> void:
+	animation.play("flying")
+
 func _physics_process(_delta : float) -> void:
-	to_move()
-	to_shoot()
+	if not is_dead():
+		to_move()
+		to_shoot()
 
 func to_move() -> void:
 	var speed_y : int = -20
@@ -39,3 +44,11 @@ func is_dead() -> bool:
 
 func take_damage(damage : int) -> void:
 	hp -= damage
+	
+	if is_dead():
+		animation.play("explosion")
+
+func _on_animation_player_animation_finished(anim_name : String) -> void:
+	match anim_name:
+		"explosion":
+			level.game_over()

@@ -8,12 +8,12 @@ class_name Level
 @export var bullet_point : Marker2D
 @export var destroy_point : Marker2D
 
-func _process(_delta : float) -> void:
-	if player.is_dead():
-		get_tree().reload_current_scene()
-	else:
-		respawn_terrains()
-		destroy_bullets()
+func _physics_process(_delta : float) -> void:
+	respawn_terrains()
+	destroy_bullets()
+
+func game_over() -> void:
+	get_tree().reload_current_scene()
 
 func out_spawn_point(y : int) -> bool:
 	return y <= player.position.y + spawn_point.position.y
