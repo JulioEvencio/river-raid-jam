@@ -1,0 +1,53 @@
+[gd_scene load_steps=12 format=3 uid="uid://d3kpxik0aaba2"]
+
+[ext_resource type="Texture2D" uid="uid://b57sarepymboy" path="res://assets/tiles/grass.png" id="1_2enit"]
+[ext_resource type="Texture2D" uid="uid://c0aj1yyoqiil4" path="res://assets/tiles/water.png" id="2_auqmk"]
+[ext_resource type="Texture2D" uid="uid://tu5mut4yw0ot" path="res://assets/tiles/house.png" id="3_is2qe"]
+[ext_resource type="Texture2D" uid="uid://dqd1jq5puqi8d" path="res://assets/tiles/building.png" id="4_ck7g7"]
+[ext_resource type="Texture2D" uid="uid://brhiwytsgui1m" path="res://assets/tiles/tree.png" id="5_b0jj7"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5i3uo"]
+texture = ExtResource("1_2enit")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gcgxk"]
+texture = ExtResource("2_auqmk")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k7q3h"]
+texture = ExtResource("3_is2qe")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lco04"]
+texture = ExtResource("4_ck7g7")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vj7kj"]
+texture = ExtResource("5_b0jj7")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSet" id="TileSet_ghq3j"]
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 0
+sources/0 = SubResource("TileSetAtlasSource_5i3uo")
+sources/1 = SubResource("TileSetAtlasSource_gcgxk")
+sources/2 = SubResource("TileSetAtlasSource_k7q3h")
+sources/3 = SubResource("TileSetAtlasSource_lco04")
+sources/4 = SubResource("TileSetAtlasSource_vj7kj")
+
+[node name="TileMap" type="TileMap"]
+tile_set = SubResource("TileSet_ghq3j")
+format = 2
+layer_0/name = "terrain"
+layer_1/name = "objects"
+layer_1/tile_data = PackedInt32Array()
