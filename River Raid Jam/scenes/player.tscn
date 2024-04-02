@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=3 uid="uid://daac3s75r1ehw"]
+
+[ext_resource type="Texture2D" uid="uid://bx62exogr5pa1" path="res://assets/sprites/player.png" id="1_bueuj"]
+
+[sub_resource type="Animation" id="Animation_lkg66"]
+resource_name = "flying"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_hfhf3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rm6uy"]
+_data = {
+"RESET": SubResource("Animation_hfhf3"),
+"flying": SubResource("Animation_lkg66")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_susr1"]
+size = Vector2(4, 10)
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 4
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_bueuj")
+hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rm6uy")
+}
+autoplay = "flying"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_susr1")
