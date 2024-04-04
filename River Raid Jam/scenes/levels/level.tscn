@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://daac3s75r1ehw" path="res://scenes/entities/player.tscn" id="4_rb8e3"]
 [ext_resource type="PackedScene" uid="uid://swx7n22q173g" path="res://scenes/entities/helicopter.tscn" id="5_k63sy"]
 
-[node name="Level" type="Node" node_paths=PackedStringArray("player", "spawn_point", "bullet_point", "destroy_point", "score_label")]
+[node name="Level" type="Node" node_paths=PackedStringArray("player", "spawn_point", "bullet_point", "destroy_point", "score_label", "tutorial_label")]
 script = ExtResource("1_dyu4s")
 helicopter_scene = ExtResource("5_k63sy")
 bullet_scene = ExtResource("2_hhcxs")
@@ -16,11 +16,12 @@ player = NodePath("Player")
 spawn_point = NodePath("Player/SpawnPoint")
 bullet_point = NodePath("Player/BulletPoint")
 destroy_point = NodePath("Player/DestroyPoint")
-score_label = NodePath("HUD/Label")
+score_label = NodePath("HUD/ScoreLabel")
+tutorial_label = NodePath("HUD/TutorialLabel")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
-[node name="Label" type="Label" parent="HUD"]
+[node name="ScoreLabel" type="Label" parent="HUD"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -31,6 +32,32 @@ text = "0"
 label_settings = ExtResource("4_1gif3")
 horizontal_alignment = 2
 vertical_alignment = 1
+
+[node name="TutorialLabel" type="Label" parent="HUD"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "WASD to move
+or
+Arrow keys to move
+
+Spacebar to shoot"
+label_settings = ExtResource("4_1gif3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TutorialTimer" type="Timer" parent="HUD"]
+wait_time = 5.0
+one_shot = true
+autostart = true
 
 [node name="ScoreTimer" type="Timer" parent="."]
 autostart = true
@@ -65,5 +92,6 @@ position = Vector2(-125, -146)
 [node name="DestroyPoint" type="Marker2D" parent="Player"]
 position = Vector2(-125, 46)
 
+[connection signal="timeout" from="HUD/TutorialTimer" to="." method="_on_tutorial_timer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="timeout" from="SpawnHelicopter" to="." method="_on_spawn_helicopter_timeout"]
