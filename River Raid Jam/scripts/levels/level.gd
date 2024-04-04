@@ -9,7 +9,12 @@ class_name Level
 @export var bullet_point : Marker2D
 @export var destroy_point : Marker2D
 
+@export var score_label : Label
+
+var score : int = 0
+
 func _ready() -> void:
+	score_label.text = str(score)
 	create_helicopter()
 
 func _physics_process(_delta : float) -> void:
@@ -61,3 +66,8 @@ func create_helicopter() -> void:
 
 func _on_spawn_helicopter_timeout():
 	create_helicopter()
+
+func _on_score_timer_timeout():
+	if score < 9999999999:
+		score += 10
+		score_label.text = str(score)

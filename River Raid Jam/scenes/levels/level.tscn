@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://daac3s75r1ehw" path="res://scenes/entities/player.tscn" id="4_rb8e3"]
 [ext_resource type="PackedScene" uid="uid://swx7n22q173g" path="res://scenes/entities/helicopter.tscn" id="5_k63sy"]
 
-[node name="Level" type="Node" node_paths=PackedStringArray("player", "spawn_point", "bullet_point", "destroy_point")]
+[node name="Level" type="Node" node_paths=PackedStringArray("player", "spawn_point", "bullet_point", "destroy_point", "score_label")]
 script = ExtResource("1_dyu4s")
 helicopter_scene = ExtResource("5_k63sy")
 bullet_scene = ExtResource("2_hhcxs")
@@ -16,6 +16,7 @@ player = NodePath("Player")
 spawn_point = NodePath("Player/SpawnPoint")
 bullet_point = NodePath("Player/BulletPoint")
 destroy_point = NodePath("Player/DestroyPoint")
+score_label = NodePath("HUD/Label")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
@@ -30,6 +31,9 @@ text = "0"
 label_settings = ExtResource("4_1gif3")
 horizontal_alignment = 2
 vertical_alignment = 1
+
+[node name="ScoreTimer" type="Timer" parent="."]
+autostart = true
 
 [node name="SpawnHelicopter" type="Timer" parent="."]
 wait_time = 2.0
@@ -61,4 +65,5 @@ position = Vector2(-125, -146)
 [node name="DestroyPoint" type="Marker2D" parent="Player"]
 position = Vector2(-125, 46)
 
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="timeout" from="SpawnHelicopter" to="." method="_on_spawn_helicopter_timeout"]
