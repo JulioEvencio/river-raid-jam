@@ -10,7 +10,7 @@ func _on_start_pressed():
 	Transition.start(func(): get_tree().change_scene_to_file("res://scenes/levels/level.tscn"))
 
 func _on_credits_pressed():
-	print("Credits")
+	Transition.start(func(): get_tree().change_scene_to_file("res://scenes/screens/credits.tscn"))
 
 func _on_exit_pressed():
 	get_tree().quit()
