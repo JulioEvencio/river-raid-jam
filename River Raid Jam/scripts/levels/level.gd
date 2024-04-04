@@ -15,6 +15,7 @@ func _ready() -> void:
 func _physics_process(_delta : float) -> void:
 	respawn_terrains()
 	destroy_bullets()
+	destroy_enemies()
 
 func game_over() -> void:
 	get_tree().reload_current_scene()
@@ -37,6 +38,11 @@ func destroy_bullets() -> void:
 	for bullet in get_tree().get_nodes_in_group("bullets"):
 		if out_bullet_point(bullet.position.y):
 			bullet.queue_free()
+
+func destroy_enemies() -> void:
+	for enemy in get_tree().get_nodes_in_group("enemies"):
+		if out_destroy_point(enemy.position.y):
+			enemy.queue_free()
 
 func add_bullet() -> void:
 	if get_tree().get_nodes_in_group("bullets").size() < 5:
