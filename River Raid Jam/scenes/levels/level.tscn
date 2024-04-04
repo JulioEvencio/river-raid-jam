@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bmo2v8t85lnxp"]
+[gd_scene load_steps=8 format=3 uid="uid://bmo2v8t85lnxp"]
 
 [ext_resource type="Script" path="res://scripts/levels/level.gd" id="1_dyu4s"]
 [ext_resource type="PackedScene" uid="uid://dp68jomgmed4x" path="res://scenes/objects/bullet.tscn" id="2_hhcxs"]
 [ext_resource type="PackedScene" uid="uid://03o5k371brl4" path="res://scenes/backgrounds/parallax_background.tscn" id="2_o8cy8"]
 [ext_resource type="PackedScene" uid="uid://cd01g5kgjrsdm" path="res://scenes/objects/terrain.tscn" id="3_8opf0"]
+[ext_resource type="LabelSettings" uid="uid://rv3vx18jcyjr" path="res://resources/labels/label_default.tres" id="4_1gif3"]
 [ext_resource type="PackedScene" uid="uid://daac3s75r1ehw" path="res://scenes/entities/player.tscn" id="4_rb8e3"]
 [ext_resource type="PackedScene" uid="uid://swx7n22q173g" path="res://scenes/entities/helicopter.tscn" id="5_k63sy"]
 
@@ -15,6 +16,20 @@ player = NodePath("Player")
 spawn_point = NodePath("Player/SpawnPoint")
 bullet_point = NodePath("Player/BulletPoint")
 destroy_point = NodePath("Player/DestroyPoint")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="HUD"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -73.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "0"
+label_settings = ExtResource("4_1gif3")
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="SpawnHelicopter" type="Timer" parent="."]
 wait_time = 2.0

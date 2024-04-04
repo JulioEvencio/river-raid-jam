@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://rv3vx18jcyjr"]
+
+[ext_resource type="FontFile" uid="uid://dndstfajh8yq3" path="res://assets/fonts/press-start-2p-font/PressStart2P-vaV7.ttf" id="1_jn2av"]
+
+[resource]
+font = ExtResource("1_jn2av")
+shadow_color = Color(0, 0, 0, 1)
