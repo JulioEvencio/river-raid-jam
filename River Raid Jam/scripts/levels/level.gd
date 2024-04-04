@@ -1,12 +1,16 @@
 extends Node
 class_name Level
 
+@export var helicopter_scene : PackedScene
 @export var bullet_scene : PackedScene
 
 @export var player : Player
 @export var spawn_point : Marker2D
 @export var bullet_point : Marker2D
 @export var destroy_point : Marker2D
+
+func _ready() -> void:
+	create_helicopter()
 
 func _physics_process(_delta : float) -> void:
 	respawn_terrains()
@@ -39,3 +43,15 @@ func add_bullet() -> void:
 		var bullet = bullet_scene.instantiate()
 		bullet.position = player.position
 		add_child(bullet)
+
+func create_enemy_x() -> float:
+	return randf_range(88, 168)
+
+func create_helicopter() -> void:
+	var helicopter = helicopter_scene.instantiate()
+	helicopter.position.x = create_enemy_x()
+	helicopter.position.y = player.position.y + spawn_point.position.y
+	add_child(helicopter)
+
+func _on_spawn_helicopter_timeout():
+	create_helicopter()

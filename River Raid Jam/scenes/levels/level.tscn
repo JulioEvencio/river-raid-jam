@@ -9,11 +9,16 @@
 
 [node name="Level" type="Node" node_paths=PackedStringArray("player", "spawn_point", "bullet_point", "destroy_point")]
 script = ExtResource("1_dyu4s")
+helicopter_scene = ExtResource("5_k63sy")
 bullet_scene = ExtResource("2_hhcxs")
 player = NodePath("Player")
 spawn_point = NodePath("Player/SpawnPoint")
 bullet_point = NodePath("Player/BulletPoint")
 destroy_point = NodePath("Player/DestroyPoint")
+
+[node name="SpawnHelicopter" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("2_o8cy8")]
 
@@ -28,9 +33,6 @@ position = Vector2(176, 0)
 [node name="TerrainRight2" parent="." instance=ExtResource("3_8opf0")]
 position = Vector2(176, -192)
 
-[node name="Helicopter" parent="." instance=ExtResource("5_k63sy")]
-position = Vector2(126, -71)
-
 [node name="Player" parent="." node_paths=PackedStringArray("level") instance=ExtResource("4_rb8e3")]
 position = Vector2(125, 146)
 level = NodePath("..")
@@ -43,3 +45,5 @@ position = Vector2(-125, -146)
 
 [node name="DestroyPoint" type="Marker2D" parent="Player"]
 position = Vector2(-125, 46)
+
+[connection signal="timeout" from="SpawnHelicopter" to="." method="_on_spawn_helicopter_timeout"]
