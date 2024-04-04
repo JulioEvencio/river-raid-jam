@@ -24,7 +24,7 @@ func _physics_process(_delta : float) -> void:
 	destroy_enemies()
 
 func game_over() -> void:
-	get_tree().reload_current_scene()
+	Transition.start(func(): get_tree().change_scene_to_file("res://scenes/screens/game_over.tscn"))
 
 func out_spawn_point(y : int) -> bool:
 	return y <= player.position.y + spawn_point.position.y

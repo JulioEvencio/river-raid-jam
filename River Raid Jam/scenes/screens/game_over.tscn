@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://cr0dxim16ijhx"]
+
+[ext_resource type="Texture2D" uid="uid://chobdntbfvqgb" path="res://assets/images/backgrounds/water.png" id="1_g4huu"]
+[ext_resource type="Script" path="res://scripts/screens/game_over.gd" id="1_gvjof"]
+[ext_resource type="LabelSettings" uid="uid://rv3vx18jcyjr" path="res://resources/labels/label_default.tres" id="3_qejh8"]
+
+[node name="GameOver" type="Control" node_paths=PackedStringArray("background")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gvjof")
+background = NodePath("ParallaxBackground/ParallaxLayer")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+scale = Vector2(2, 2)
+motion_mirroring = Vector2(160, 192)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_g4huu")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -11.5
+offset_right = 72.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Game Over"
+label_settings = ExtResource("3_qejh8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
