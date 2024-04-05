@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4a73pkg5i8m2"]
+
+[ext_resource type="Script" path="res://scripts/objects/island.gd" id="1_cjpl0"]
+[ext_resource type="Texture2D" uid="uid://d1jdrgigmaph6" path="res://assets/images/objects/grass_16.png" id="1_plfyt"]
+[ext_resource type="PackedScene" uid="uid://b702ct8qklhet" path="res://scenes/tiles/tile_map.tscn" id="2_cc0ok"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u77y2"]
+size = Vector2(16, 16)
+
+[node name="Island" type="CharacterBody2D" groups=["islands"]]
+collision_mask = 0
+script = ExtResource("1_cjpl0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_plfyt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_u77y2")
+
+[node name="TileMap" parent="." instance=ExtResource("2_cc0ok")]
+layer_0/tile_data = PackedInt32Array(-1, 0, 0, 0, 2, 0)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_u77y2")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

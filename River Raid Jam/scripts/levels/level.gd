@@ -1,6 +1,7 @@
 extends Node
 class_name Level
 
+@export var island_scene : PackedScene
 @export var helicopter_scene : PackedScene
 @export var bullet_scene : PackedScene
 
@@ -22,6 +23,7 @@ func _physics_process(_delta : float) -> void:
 	respawn_terrains()
 	destroy_bullets()
 	destroy_enemies()
+	destroy_islands()
 
 func game_over() -> void:
 	Transition.start(func(): get_tree().change_scene_to_file("res://scenes/screens/game_over.tscn"))
@@ -47,8 +49,13 @@ func destroy_bullets() -> void:
 
 func destroy_enemies() -> void:
 	for enemy in get_tree().get_nodes_in_group("enemies"):
-		if out_destroy_point(enemy.position.y):
+		if out_destroy_point(enemy.position.y - 30):
 			enemy.queue_free()
+
+func destroy_islands() -> void:
+	for island in get_tree().get_nodes_in_group("islands"):
+		if out_destroy_point(island.position.y - 30):
+			island.queue_free()
 
 func add_bullet() -> void:
 	if get_tree().get_nodes_in_group("bullets").size() < 5:
@@ -65,6 +72,12 @@ func create_helicopter() -> void:
 	helicopter.position.y = player.position.y + spawn_point.position.y
 	add_child(helicopter)
 
+func create_island() -> void:
+	var island = island_scene.instantiate()
+	island.position.x = create_enemy_x()
+	island.position.y = player.position.y + spawn_point.position.y
+	add_child(island)
+
 func _on_spawn_helicopter_timeout():
 	create_helicopter()
 
@@ -75,3 +88,6 @@ func _on_score_timer_timeout():
 
 func _on_tutorial_timer_timeout():
 	tutorial_label.hide()
+
+func _on_spawn_island_timeout():
+	create_island()

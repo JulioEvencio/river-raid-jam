@@ -6,6 +6,8 @@ const SPEED : int = -1
 func _physics_process(_delta : float) -> void:
 	position.y += SPEED
 
-func _on_body_entered(enemy : Enemy) -> void:
-	enemy.to_kill()
+func _on_body_entered(body) -> void:
+	if body is Enemy:
+		body.to_kill()
+	
 	queue_free()

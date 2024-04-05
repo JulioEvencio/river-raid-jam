@@ -52,3 +52,6 @@ func _on_animation_player_animation_finished(anim_name : String) -> void:
 	match anim_name:
 		"explosion":
 			level.game_over()
+
+func _on_area_2d_body_entered(_body) -> void:
+	take_damage(hp)
