@@ -13,13 +13,13 @@ class_name Level
 @export var score_label : Label
 @export var tutorial_label : Label
 
-var score : int = 0
-
 func _ready() -> void:
-	score_label.text = str(score)
+	Singleton.score = 0
 	create_helicopter()
 
 func _physics_process(_delta : float) -> void:
+	score_label.text = str(Singleton.score)
+	
 	respawn_terrains()
 	destroy_bullets()
 	destroy_enemies()
@@ -80,11 +80,6 @@ func create_island() -> void:
 
 func _on_spawn_helicopter_timeout():
 	create_helicopter()
-
-func _on_score_timer_timeout():
-	if score < 9999999999:
-		score += 10
-		score_label.text = str(score)
 
 func _on_tutorial_timer_timeout():
 	tutorial_label.hide()
