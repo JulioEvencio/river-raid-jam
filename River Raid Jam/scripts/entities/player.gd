@@ -3,6 +3,8 @@ class_name  Player
 
 @export var level : Level
 @export var animation : AnimationPlayer
+@export var audio_helice : AudioStreamPlayer
+@export var audio_dead : AudioStreamPlayer
 
 const SPEED : int = 80
 
@@ -46,6 +48,8 @@ func take_damage(damage : int) -> void:
 	hp -= damage
 	
 	if is_dead():
+		audio_helice.stop()
+		audio_dead.play()
 		animation.play("explosion")
 
 func _on_animation_player_animation_finished(anim_name : String) -> void:

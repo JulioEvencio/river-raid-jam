@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://daac3s75r1ehw"]
+[gd_scene load_steps=11 format=3 uid="uid://daac3s75r1ehw"]
 
 [ext_resource type="Texture2D" uid="uid://bx62exogr5pa1" path="res://assets/images/entities/player.png" id="1_bueuj"]
 [ext_resource type="Script" path="res://scripts/entities/player.gd" id="1_h7tpe"]
+[ext_resource type="AudioStream" uid="uid://susaj43daagc" path="res://assets/audios/helicopter.wav" id="4_nxkhd"]
 [ext_resource type="Texture2D" uid="uid://bmr1uj6b8lxtk" path="res://assets/images/effects/explosion.png" id="4_slhtr"]
+[ext_resource type="AudioStream" uid="uid://x81fl6txuslo" path="res://assets/audios/player_dead.wav" id="5_pjw68"]
 
 [sub_resource type="Animation" id="Animation_hfhf3"]
 length = 0.001
@@ -170,11 +172,13 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_susr1"]
 size = Vector2(4, 10)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animation")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animation", "audio_helice", "audio_dead")]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_h7tpe")
 animation = NodePath("AnimationPlayer")
+audio_helice = NodePath("HeliceAudioStreamPlayer")
+audio_dead = NodePath("DeadAudioStreamPlayer")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(0, -50)
@@ -198,6 +202,14 @@ collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_susr1")
+
+[node name="HeliceAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_nxkhd")
+volume_db = -10.0
+autoplay = true
+
+[node name="DeadAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_pjw68")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dp68jomgmed4x"]
+[gd_scene load_steps=5 format=3 uid="uid://dp68jomgmed4x"]
 
 [ext_resource type="Texture2D" uid="uid://b33ch3o3ehyi3" path="res://assets/images/objects/bullet.png" id="1_eqg5v"]
 [ext_resource type="Script" path="res://scripts/objects/bullet.gd" id="1_wf5ek"]
+[ext_resource type="AudioStream" uid="uid://brdm40mfqu48j" path="res://assets/audios/bullet.wav" id="3_w0qb5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bmegq"]
 size = Vector2(1, 2)
@@ -17,5 +18,10 @@ texture = ExtResource("1_eqg5v")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -1)
 shape = SubResource("RectangleShape2D_bmegq")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_w0qb5")
+volume_db = -10.0
+autoplay = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
