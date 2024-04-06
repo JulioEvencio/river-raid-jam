@@ -50,7 +50,9 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "WASD to move
+
 or
+
 Arrow keys to move
 
 
