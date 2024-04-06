@@ -9,4 +9,3 @@ audio_menu = NodePath("AudioStreamPlayer")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_8retb")
-autoplay = true
