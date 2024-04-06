@@ -1,7 +1,7 @@
 extends Area2D
 class_name Bullet
 
-const SPEED : int = -1
+const SPEED : int = -5
 
 func _physics_process(_delta : float) -> void:
 	position.y += SPEED

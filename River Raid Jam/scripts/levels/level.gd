@@ -58,7 +58,7 @@ func destroy_islands() -> void:
 			island.queue_free()
 
 func add_bullet() -> void:
-	if get_tree().get_nodes_in_group("bullets").size() < 5:
+	if get_tree().get_nodes_in_group("bullets").size() < 1:
 		var bullet = bullet_scene.instantiate()
 		bullet.position = player.position
 		add_child(bullet)
