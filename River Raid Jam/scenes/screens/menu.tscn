@@ -35,7 +35,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("3_e2it2")
 
-[node name="Label" type="Label" parent="."]
+[node name="TitleLabel" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -97,7 +97,7 @@ offset_right = 55.0
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("1_04owu")
 theme_override_font_sizes/font_size = 10
-text = "V 0.1"
+text = "V 0.1 BETA"
 horizontal_alignment = 1
 vertical_alignment = 1
 
