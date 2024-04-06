@@ -68,6 +68,7 @@ offset_bottom = -34.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 20
+alignment = 1
 vertical = true
 
 [node name="Start" type="Button" parent="BoxContainer"]
@@ -80,11 +81,6 @@ layout_mode = 2
 theme = ExtResource("4_ec2bm")
 text = "Credits
 "
-
-[node name="Exit" type="Button" parent="BoxContainer"]
-layout_mode = 2
-theme = ExtResource("4_ec2bm")
-text = "Exit"
 
 [node name="VersionLabel" type="Label" parent="."]
 layout_mode = 1
@@ -103,4 +99,3 @@ vertical_alignment = 1
 
 [connection signal="pressed" from="BoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="BoxContainer/Credits" to="." method="_on_credits_pressed"]
-[connection signal="pressed" from="BoxContainer/Exit" to="." method="_on_exit_pressed"]
