@@ -4,7 +4,7 @@ class_name  Player
 @export var level : Level
 @export var animation : AnimationPlayer
 
-const SPEED : int = 50
+const SPEED : int = 80
 
 var hp : int = 1
 
@@ -17,10 +17,10 @@ func _physics_process(_delta : float) -> void:
 		to_shoot()
 
 func to_move() -> void:
-	var speed_y : int = -20
+	var speed_y : int = -50
 	
 	if Input.is_action_pressed("move_down"):
-		speed_y = -5
+		speed_y += 20
 	elif Input.is_action_pressed("move_up"):
 		speed_y = -SPEED
 	
