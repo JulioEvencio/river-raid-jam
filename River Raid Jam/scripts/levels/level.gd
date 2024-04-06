@@ -14,6 +14,7 @@ class_name Level
 @export var tutorial_label : Label
 
 func _ready() -> void:
+	Singleton.audio_menu.stop()
 	Singleton.score = 0
 	create_helicopter()
 

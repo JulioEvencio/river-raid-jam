@@ -18,7 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Transition="*res://scenes/transitions/transition.tscn"
-Singleton="*res://scripts/singleton/singleton.gd"
+Singleton="*res://scenes/singleton/singleton.tscn"
 
 [display]
 

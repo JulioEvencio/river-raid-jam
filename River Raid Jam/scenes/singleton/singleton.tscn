@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbwqs3ax8hguj"]
+
+[ext_resource type="Script" path="res://scripts/singleton/singleton.gd" id="1_6srsn"]
+[ext_resource type="AudioStream" uid="uid://cjofjbe3yjqdk" path="res://assets/audios/menu.wav" id="2_8retb"]
+
+[node name="Singleton" type="Node" node_paths=PackedStringArray("audio_menu")]
+script = ExtResource("1_6srsn")
+audio_menu = NodePath("AudioStreamPlayer")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_8retb")
+autoplay = true
