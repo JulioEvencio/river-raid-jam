@@ -16,8 +16,6 @@ Please feel free to send pull requests and report issues
 
 ## Gallery
 
-<div style="display: inline"><br>
   <img align="center" alt="Game - Image 01" height="300" width="300" style="margin: 10px;" src="https://img.itch.zone/aW1hZ2UvMjYyOTk0Ny8xNTY3MDgzOC5wbmc=/original/uY07YO.png"/>
   <img align="center" alt="Game - Image 02" height="300" width="300" style="margin: 10px;" src="https://img.itch.zone/aW1hZ2UvMjYyOTk0Ny8xNTY3MDg0MC5wbmc=/original/2qi3l%2B.png"/>
   <img align="center" alt="Game - Image 03" height="300" width="300" style="margin: 10px;" src="https://img.itch.zone/aW1hZ2UvMjYyOTk0Ny8xNTY3MDgzOS5wbmc=/original/I1AF1p.png"/>
-</div>
