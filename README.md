@@ -8,7 +8,7 @@ Click [here](https://julio-igreja.itch.io/river-raid-jam) to play the game
 
 ## How to run
 
-This project was made in Godot, just import the "project.godot" file
+This project was made in [Godot](https://godotengine.org), just import the "project.godot" file
 
 ## Contribution
 
