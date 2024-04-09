@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bmo2v8t85lnxp"]
+[gd_scene load_steps=10 format=3 uid="uid://bmo2v8t85lnxp"]
 
 [ext_resource type="Script" path="res://scripts/levels/level.gd" id="1_dyu4s"]
 [ext_resource type="PackedScene" uid="uid://dp68jomgmed4x" path="res://scenes/objects/bullet.tscn" id="2_hhcxs"]
@@ -7,18 +7,21 @@
 [ext_resource type="PackedScene" uid="uid://cd01g5kgjrsdm" path="res://scenes/objects/terrain.tscn" id="3_8opf0"]
 [ext_resource type="LabelSettings" uid="uid://rv3vx18jcyjr" path="res://resources/labels/label_default.tres" id="4_1gif3"]
 [ext_resource type="PackedScene" uid="uid://daac3s75r1ehw" path="res://scenes/entities/player.tscn" id="4_rb8e3"]
+[ext_resource type="PackedScene" uid="uid://bpeb1ssxyaha0" path="res://scenes/objects/fuel.tscn" id="5_bny12"]
 [ext_resource type="PackedScene" uid="uid://swx7n22q173g" path="res://scenes/entities/helicopter.tscn" id="5_k63sy"]
 
-[node name="Level" type="Node" node_paths=PackedStringArray("player", "spawn_point", "bullet_point", "destroy_point", "score_label", "tutorial_label")]
+[node name="Level" type="Node" node_paths=PackedStringArray("player", "spawn_point", "bullet_point", "destroy_point", "score_label", "fuel_label", "tutorial_label")]
 script = ExtResource("1_dyu4s")
 island_scene = ExtResource("2_jnwff")
 helicopter_scene = ExtResource("5_k63sy")
 bullet_scene = ExtResource("2_hhcxs")
+fuel_scene = ExtResource("5_bny12")
 player = NodePath("Player")
 spawn_point = NodePath("Player/SpawnPoint")
 bullet_point = NodePath("Player/BulletPoint")
 destroy_point = NodePath("Player/DestroyPoint")
 score_label = NodePath("HUD/ScoreLabel")
+fuel_label = NodePath("HUD/FuelLabel")
 tutorial_label = NodePath("HUD/TutorialLabel")
 
 [node name="HUD" type="CanvasLayer" parent="."]
@@ -33,6 +36,16 @@ offset_right = -10.0
 offset_bottom = 33.0
 grow_horizontal = 0
 text = "0"
+label_settings = ExtResource("4_1gif3")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="FuelLabel" type="Label" parent="HUD"]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 130.0
+offset_bottom = 33.0
+text = "Fuel: 100%"
 label_settings = ExtResource("4_1gif3")
 horizontal_alignment = 2
 vertical_alignment = 1
@@ -74,6 +87,10 @@ autostart = true
 wait_time = 5.0
 autostart = true
 
+[node name="SpawnFuel" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
 [node name="ParallaxBackground" parent="." instance=ExtResource("2_o8cy8")]
 
 [node name="TerrainLeft" parent="." instance=ExtResource("3_8opf0")]
@@ -103,3 +120,4 @@ position = Vector2(-125, 46)
 [connection signal="timeout" from="HUD/TutorialTimer" to="." method="_on_tutorial_timer_timeout"]
 [connection signal="timeout" from="SpawnHelicopter" to="." method="_on_spawn_helicopter_timeout"]
 [connection signal="timeout" from="SpawnIsland" to="." method="_on_spawn_island_timeout"]
+[connection signal="timeout" from="SpawnFuel" to="." method="_on_spawn_fuel_timeout"]

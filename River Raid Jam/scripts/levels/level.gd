@@ -4,6 +4,7 @@ class_name Level
 @export var island_scene : PackedScene
 @export var helicopter_scene : PackedScene
 @export var bullet_scene : PackedScene
+@export var fuel_scene : PackedScene
 
 @export var player : Player
 @export var spawn_point : Marker2D
@@ -11,6 +12,7 @@ class_name Level
 @export var destroy_point : Marker2D
 
 @export var score_label : Label
+@export var fuel_label : Label
 @export var tutorial_label : Label
 
 func _ready() -> void:
@@ -20,11 +22,13 @@ func _ready() -> void:
 
 func _physics_process(_delta : float) -> void:
 	score_label.text = str(Singleton.score)
+	fuel_label.text = "Fuel: " + str(player.fuel) + "%"
 	
 	respawn_terrains()
 	destroy_bullets()
 	destroy_enemies()
 	destroy_islands()
+	destroy_fuels()
 
 func game_over() -> void:
 	Transition.start(func(): get_tree().change_scene_to_file("res://scenes/screens/game_over.tscn"))
@@ -58,6 +62,11 @@ func destroy_islands() -> void:
 		if out_destroy_point(island.position.y - 30):
 			island.queue_free()
 
+func destroy_fuels() -> void:
+	for fuel in get_tree().get_nodes_in_group("fuels"):
+		if out_destroy_point(fuel.position.y - 100):
+			fuel.queue_free()
+
 func add_bullet() -> void:
 	if get_tree().get_nodes_in_group("bullets").size() < 1:
 		var bullet = bullet_scene.instantiate()
@@ -79,11 +88,20 @@ func create_island() -> void:
 	island.position.y = player.position.y + spawn_point.position.y
 	add_child(island)
 
-func _on_spawn_helicopter_timeout():
+func create_fuel() -> void:
+	var fuel = fuel_scene.instantiate()
+	fuel.position.x = create_enemy_x()
+	fuel.position.y = player.position.y + spawn_point.position.y
+	add_child(fuel)
+
+func _on_spawn_helicopter_timeout() -> void:
 	create_helicopter()
 
-func _on_tutorial_timer_timeout():
+func _on_tutorial_timer_timeout() -> void:
 	tutorial_label.hide()
 
-func _on_spawn_island_timeout():
+func _on_spawn_island_timeout() -> void:
 	create_island()
+
+func _on_spawn_fuel_timeout() -> void:
+	create_fuel()

@@ -16,4 +16,5 @@ func _on_area_2d_body_entered(body) -> void:
 		add_score()
 		body.to_kill()
 	
-	queue_free()
+	if not body is Fuel:
+		queue_free()

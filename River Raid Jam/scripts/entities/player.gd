@@ -9,8 +9,10 @@ class_name  Player
 const SPEED : int = 80
 
 var hp : int = 1
+var fuel : int = 100
 
 func _ready() -> void:
+	z_index = 10
 	animation.play("flying")
 
 func _physics_process(_delta : float) -> void:
@@ -57,5 +59,19 @@ func _on_animation_player_animation_finished(anim_name : String) -> void:
 		"explosion":
 			level.game_over()
 
-func _on_area_2d_body_entered(_body) -> void:
-	take_damage(hp)
+func _on_area_2d_body_entered(body) -> void:
+	if body is Fuel:
+		fuel += 30
+		Singleton.score += 10
+		body.queue_free()
+		
+		if fuel > 100:
+			fuel = 100
+	else:
+		take_damage(hp)
+
+func _on_timer_timeout() -> void:
+	fuel -= 5
+	
+	if fuel <= 0:
+		take_damage(hp)
