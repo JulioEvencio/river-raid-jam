@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://daac3s75r1ehw"]
+[gd_scene load_steps=13 format=3 uid="uid://daac3s75r1ehw"]
 
 [ext_resource type="Texture2D" uid="uid://bx62exogr5pa1" path="res://assets/images/entities/player.png" id="1_bueuj"]
 [ext_resource type="Script" path="res://scripts/entities/player.gd" id="1_h7tpe"]
 [ext_resource type="AudioStream" uid="uid://susaj43daagc" path="res://assets/audios/helicopter.wav" id="4_nxkhd"]
 [ext_resource type="Texture2D" uid="uid://bmr1uj6b8lxtk" path="res://assets/images/effects/explosion.png" id="4_slhtr"]
 [ext_resource type="AudioStream" uid="uid://x81fl6txuslo" path="res://assets/audios/player_dead.wav" id="5_pjw68"]
+[ext_resource type="AudioStream" uid="uid://cl07ld20tjhvq" path="res://assets/audios/fuel_collect.wav" id="6_0n4ga"]
+[ext_resource type="AudioStream" uid="uid://dvntemafu7mxe" path="res://assets/audios/fuel_low.wav" id="7_xk118"]
 
 [sub_resource type="Animation" id="Animation_hfhf3"]
 length = 0.001
@@ -172,13 +174,15 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_susr1"]
 size = Vector2(4, 10)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animation", "audio_helice", "audio_dead")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animation", "audio_helice", "audio_dead", "fuel_collet", "fuel_low")]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_h7tpe")
 animation = NodePath("AnimationPlayer")
 audio_helice = NodePath("HeliceAudioStreamPlayer")
 audio_dead = NodePath("DeadAudioStreamPlayer")
+fuel_collet = NodePath("FuelCollectAudioStreamPlayer")
+fuel_low = NodePath("FuelLowAudioStreamPlayer")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(0, -50)
@@ -211,8 +215,13 @@ autoplay = true
 [node name="DeadAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_pjw68")
 
+[node name="FuelCollectAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_0n4ga")
+
+[node name="FuelLowAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_xk118")
+
 [node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
 autostart = true
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

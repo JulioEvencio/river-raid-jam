@@ -5,6 +5,8 @@ class_name  Player
 @export var animation : AnimationPlayer
 @export var audio_helice : AudioStreamPlayer
 @export var audio_dead : AudioStreamPlayer
+@export var fuel_collet : AudioStreamPlayer
+@export var fuel_low : AudioStreamPlayer
 
 const SPEED : int = 80
 
@@ -61,17 +63,25 @@ func _on_animation_player_animation_finished(anim_name : String) -> void:
 
 func _on_area_2d_body_entered(body) -> void:
 	if body is Fuel:
+		fuel_collet.play()
+		body.queue_free()
 		fuel += 30
 		Singleton.score += 10
-		body.queue_free()
 		
-		if fuel > 100:
-			fuel = 100
+		if fuel > 20:
+			fuel_low.stop()
+			
+			if fuel > 100:
+				fuel = 100
 	else:
 		take_damage(hp)
 
 func _on_timer_timeout() -> void:
-	fuel -= 5
+	if not is_dead():
+		fuel -= 5
 	
-	if fuel <= 0:
-		take_damage(hp)
+		if fuel <= 20 and not fuel_low.playing:
+			fuel_low.play()
+		
+		if fuel <= 0:
+			take_damage(hp)
