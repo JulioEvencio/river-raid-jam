@@ -19,7 +19,7 @@ func _physics_process(_delta : float) -> void:
 		to_shoot()
 
 func to_move() -> void:
-	var speed_y : int = -50
+	var speed_y : int = -50 - Singleton.score
 	
 	if Input.is_action_pressed("move_down"):
 		speed_y += 20
