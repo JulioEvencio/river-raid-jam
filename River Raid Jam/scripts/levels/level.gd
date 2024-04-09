@@ -50,7 +50,7 @@ func out_destroy_point(y : int) -> bool:
 func respawn_terrains() -> void:
 	for terrain in get_tree().get_nodes_in_group("terrains"):
 		if out_destroy_point(terrain.position.y):
-			terrain.position.y = player.position.y + spawn_point.position.y
+			terrain.position.y -= 384 # terrain height * 2 == 192 * 2
 
 func destroy_bullets() -> void:
 	for bullet in get_tree().get_nodes_in_group("bullets"):
