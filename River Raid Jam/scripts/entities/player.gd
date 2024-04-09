@@ -52,6 +52,7 @@ func take_damage(damage : int) -> void:
 	hp -= damage
 	
 	if is_dead():
+		fuel_low.stop()
 		audio_helice.stop()
 		audio_dead.play()
 		animation.play("explosion")

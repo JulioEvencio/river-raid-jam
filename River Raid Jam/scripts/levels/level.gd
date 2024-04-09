@@ -24,6 +24,11 @@ func _physics_process(_delta : float) -> void:
 	score_label.text = str(Singleton.score)
 	fuel_label.text = "Fuel: " + str(player.fuel) + "%"
 	
+	if player.fuel <= 20:
+		fuel_label.set_modulate(Color(255, 0, 0))
+	else:
+		fuel_label.set_modulate(Color(255, 255, 255))
+	
 	respawn_terrains()
 	destroy_bullets()
 	destroy_enemies()

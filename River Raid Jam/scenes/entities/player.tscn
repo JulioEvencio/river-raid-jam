@@ -222,6 +222,7 @@ stream = ExtResource("6_0n4ga")
 stream = ExtResource("7_xk118")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
 autostart = true
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
