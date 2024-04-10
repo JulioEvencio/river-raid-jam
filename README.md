@@ -5,6 +5,7 @@ A clone of River Raid (Atari 2600) made for [1º Contest da GamerzSFX Brasil](ht
 ## Links
 
 Click [here](https://julio-igreja.itch.io/river-raid-jam) to play the game
+
 Click [here](https://youtu.be/9l8sSAQLW90) to watch the game demonstration video
 
 ## How to run
