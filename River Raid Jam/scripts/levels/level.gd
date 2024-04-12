@@ -20,7 +20,8 @@ func _ready() -> void:
 	Singleton.audio_menu.stop()
 	Singleton.score = 0
 	create_helicopter()
-	camera.position = player.position
+	camera.position.x = player.position.x
+	camera.position.y = player.position.y - 50
 
 func _physics_process(_delta : float) -> void:
 	score_label.text = str(Singleton.score)
