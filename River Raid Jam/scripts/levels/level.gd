@@ -10,6 +10,7 @@ class_name Level
 @export var spawn_point : Marker2D
 @export var bullet_point : Marker2D
 @export var destroy_point : Marker2D
+@export var camera : Camera2D
 
 @export var score_label : Label
 @export var fuel_label : Label
@@ -19,6 +20,7 @@ func _ready() -> void:
 	Singleton.audio_menu.stop()
 	Singleton.score = 0
 	create_helicopter()
+	camera.position = player.position
 
 func _physics_process(_delta : float) -> void:
 	score_label.text = str(Singleton.score)
@@ -34,6 +36,8 @@ func _physics_process(_delta : float) -> void:
 	destroy_enemies()
 	destroy_islands()
 	destroy_fuels()
+	
+	camera.position.y = player.position.y - 50
 
 func game_over() -> void:
 	Transition.start(func(): get_tree().change_scene_to_file("res://scenes/screens/game_over.tscn"))

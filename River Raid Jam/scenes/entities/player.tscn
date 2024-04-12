@@ -184,10 +184,6 @@ audio_dead = NodePath("DeadAudioStreamPlayer")
 fuel_collet = NodePath("FuelCollectAudioStreamPlayer")
 fuel_low = NodePath("FuelLowAudioStreamPlayer")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2(0, -50)
-zoom = Vector2(2, 2)
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_bueuj")
 hframes = 2

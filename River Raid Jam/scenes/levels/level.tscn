@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bpeb1ssxyaha0" path="res://scenes/objects/fuel.tscn" id="5_bny12"]
 [ext_resource type="PackedScene" uid="uid://swx7n22q173g" path="res://scenes/entities/helicopter.tscn" id="5_k63sy"]
 
-[node name="Level" type="Node" node_paths=PackedStringArray("player", "spawn_point", "bullet_point", "destroy_point", "score_label", "fuel_label", "tutorial_label")]
+[node name="Level" type="Node" node_paths=PackedStringArray("player", "spawn_point", "bullet_point", "destroy_point", "camera", "score_label", "fuel_label", "tutorial_label")]
 script = ExtResource("1_dyu4s")
 island_scene = ExtResource("2_jnwff")
 helicopter_scene = ExtResource("5_k63sy")
@@ -20,9 +20,13 @@ player = NodePath("Player")
 spawn_point = NodePath("Player/SpawnPoint")
 bullet_point = NodePath("Player/BulletPoint")
 destroy_point = NodePath("Player/DestroyPoint")
+camera = NodePath("Camera2D")
 score_label = NodePath("HUD/ScoreLabel")
 fuel_label = NodePath("HUD/FuelLabel")
 tutorial_label = NodePath("HUD/TutorialLabel")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
