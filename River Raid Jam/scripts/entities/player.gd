@@ -23,14 +23,14 @@ func _physics_process(_delta : float) -> void:
 		to_shoot()
 
 func to_move() -> void:
-	var speed_y : int = -50 - Singleton.score
+	var speed_y : int = -50
 	
 	if Input.is_action_pressed("move_down"):
 		speed_y += 20
 	elif Input.is_action_pressed("move_up"):
 		speed_y = -SPEED
 	
-	velocity.y = speed_y
+	velocity.y = speed_y - Singleton.score
 	
 	var direction : float = Input.get_axis("move_left", "move_right")
 	
