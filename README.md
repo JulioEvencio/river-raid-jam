@@ -10,7 +10,7 @@ Click [here](https://youtu.be/9l8sSAQLW90) to watch the game demonstration video
 
 ## How to run
 
-This project was made in [Godot](https://godotengine.org), just import the "project.godot" file
+This project was made in [Godot](https://godotengine.org), just import the **"project.godot"** file
 
 ## Contribution
 
