@@ -1,6 +1,6 @@
 # River Raid Jam
 
-A clone of River Raid (Atari 2600) made for [1º Contest da GamerzSFX Brasil](https://itch.io/jam/contest-gamerzsfx-2024)
+A clone of [River Raid (Atari 2600)](https://www.atari2600.com.br/Atari/Roms/01nD/River_Raid) made for [1º Contest da GamerzSFX Brasil](https://itch.io/jam/contest-gamerzsfx-2024)
 
 ## Links
 
